@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}     
+    <form action="/" method="POST" class="spec-search">
+        <input type="text" id="url" name="url" class="text-entry" placeholder="Enter your URL here">
+        <input type="submit" value="Submit" class="button">
+    </form>
+    
+    <!-- Displaying errors in the same page -->
+    {% if result_display %}
+        <p class="error-message">{{ result_display }}</p>
+    {% endif %}
+
+    <div class="instructions">
+        <h2><u>Instructions</u></h2>
+        <ul type="disc">
+            <li>Enter the complete flipkart URL of product</li>
+            <li><span class="instruction-error">"Connection not established"</span> error indicates problems receiving response from flipkart</li>
+            <li><span class="instruction-error">"Too many requests"</span> error indicates that you are trying to submit URLs too frequently. <br>   Wait for a few seconds before submitting another URL</li>
+        </ul>
+    </div>
+
+{% endblock %}

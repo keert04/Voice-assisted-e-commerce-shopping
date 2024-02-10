@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    
+    <form action="/search" method="POST" class="spec-search">
+        <input type="text" id="search" class="text-entry" name="search" placeholder="Search for product specification">
+        <input type="submit" class="button" id="submit" value="Submit">
+    </form>
+    
+    <form action="/search" method="POST">
+        <img src="static/voice_button.png" alt="voice_button" onclick="runSpeechRecognition()" name="voicer" class="voice-image">
+    </form>
+
+    <!-- Displays current status (listening..) -->
+    <span id="action"></span>
+
+    <!-- Displays recognized text -->
+    <div id="output" ></div>
+
+    {% if result_display %}
+        <p class="result-display">{{ result_display }}</p>
+        <script>
+            responsiveVoice.speak("{{ result_display }}");
+        </script>
+    {% endif %}
+    
+    <div class="instructions">
+        <h2><u>Instructions</u></h2>
+        <ul>
+            <li>Search for the desired specification (price, rating...)</li>
+            <li>Click on the microphone icon to speak - Allow mic access in the popup</li>
+            <li>Voice recognition might not work ideally in some browsers. <br> Try switching browsers or turning off extensions</li>
+            <li><i>Recommended browser - Chrome (tested in: Version 120.0.6099.129) </i></li>
+        </ul>
+    </div>
+    <script>
+        function runSpeechRecognition() {
+		        // Element to display output
+		        var output = document.getElementById("output");
+		        // Element to display status of voice recognition
+		        var action = document.getElementById("action");
+
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "Listening...";
+                };
+                
+                recognition.onspeechend = function() {
+                    action.innerHTML = "Captured voice";
+                    recognition.stop();
+                }
+
+                recognition.onerror = function(event) {
+                    action.innerHTML = "Could not recognize voice";
+                }
+              
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    output.innerHTML = "<b>Text:</b> " + transcript;
+                    
+                    document.getElementById("search").value = transcript;
+                    document.getElementById("submit").click()
+                };
+              
+                 recognition.start();
+	        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="content">
+        <p class="colored color-1">
+            The model works by getting raw HTML from the product webpage using <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup</a> and pinpointing meaningful specification details of the product using HTML tags - A process known as <i>"Web scraping". </i>
+        </p>
+
+        <p class="colored color-2">
+            The extracted information is then converted into key - value pairs, meaning that each specification name is matched to it's corresponding specification detail - <i>A "Dictionary"</i>
+        </p>
+
+        <p class="colored color-1">
+            The user is required to add a query or request stating the desired specification name intuitively. This is achieved either through the text entry box or the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API">Web Speech API </a> which converts voice input to text.
+        </p>
+
+        <p class="colored color-2">
+            <a href="https://pypi.org/project/sentence-transformers/">Sentence transformers</a> are used to convert this query or request into <i>word embeddings</i> - a type of word representation that allows words with similar meaning to have a similar representation. 
+            <br>Each of the keys in the key - value pairs (specification names) also go through the same process.
+        </p>
+
+        <p class="colored color-1">
+            We then find the similaritly scores between each query and every specification name that exists in the key-value pair. The specification name with the highest similaritly score to the query will be selected as the result to be displayed on the screen and be read out loud using the <a href="https://responsivevoice.org/">ResponsiveVoice text to speech API</a>.
+            <br>Note that if the highest similaritly value obtained does not cross a similarity score of 0.5 (50%), no result will be displayed.
+        </p>
+    </div>
+{% endblock %}

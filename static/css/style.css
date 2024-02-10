@@ -1,0 +1,202 @@
+html, body {
+    /* Facilitate footer to stay in bottom */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: table;
+}
+
+*{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a{
+    background-color: inherit;
+    color: yellow;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+body{
+    text-align: center;
+    margin: 0;
+}
+
+.colored{
+    text-align: left;
+    font-size: 20px;
+    margin: 3% 10%;
+    line-height: 1.2;
+}
+
+.color-1{
+    background-color: rgb(8, 67, 2);
+    padding: 1%;
+}
+
+.color-2{
+    background-color: rgb(62, 2, 38);
+    padding: 1%;
+}
+
+.result-display{
+    text-align: center;
+}
+
+i{
+    background-color: inherit;
+}
+
+h1{
+    padding: 1%;
+    background-color: inherit;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(60, 70, 76);
+    align-items: center;
+}
+
+.title{
+    background-color: inherit;
+    width: 85%; /* Gives other 15% to how-it-works button */
+}
+
+.working{
+    background-color: inherit;
+    width: 15%;
+}
+
+/* Input tag with "button" class */
+.button{
+    background-color: rgb(187, 183, 252);
+    color: black;
+    border-radius: 30px;
+    border: 2px solid rgb(187, 183, 252);
+    margin: 0;
+    padding: 5px 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-size: 25px;
+}
+
+.text-entry{
+    margin-top: 3%;
+    width: 22%;
+    font-size: 20px;
+}
+
+.text-entry:hover{
+    font-size: 22px;
+}
+
+h2{
+    /* Prevents gap on top */
+    margin: 0;  
+}
+
+.instructions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    font-size: 20px;
+    margin-top: 1%;
+    line-height: 1.5;
+}
+
+.voice-image{
+    margin-top: 3%;
+    margin-bottom: 1%;
+    width: 5%;
+}
+
+.voice-image:hover{
+    width: 6%;
+    cursor: pointer;
+}
+
+.error-message{
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+
+.instruction-error{
+    color: skyblue;
+}
+
+footer{
+    text-align: center;
+    background-color: rgb(60, 70, 76);
+    display: table-row; /* To keep footer in the bottom */
+    height: 5%;
+}
+
+@media (max-width: 900px) {
+    h1{
+        font-size: 25px;
+    }
+
+    .instructions{
+        font-size: 16px;
+    }
+
+    .working{
+        background-color: inherit;
+        width: 100%;
+    }
+
+    .title{
+        width: 100%;
+    }
+
+    .button{
+        font-size: 16px;
+    }
+
+    .button:hover{
+        font-size: 18px;
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .spec-search{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .text-entry{
+        width: 50%;
+        margin-top: 5%;
+    }
+    .button{
+        width: fit-content;
+    }
+    .voice-image{
+        width: 12%;
+    }
+}
+
+@media (max-width: 500px) {
+    h1{
+        font-size: 25px;
+    }
+}
